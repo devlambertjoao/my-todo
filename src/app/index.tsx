@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
+import CreateTodo from '../components/create-todo';
 
 const App = () => {
   return (
     <View>
-      <Text>Hello World</Text>
+      <CreateTodo onCreate={() => {}} />
     </View>
   );
 };
