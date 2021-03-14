@@ -1,16 +1,7 @@
 import React, {useRef} from 'react';
-import {Button, StyleSheet, TextInput, View} from 'react-native';
 import InputReference from '../../interfaces/InputReference';
 import Todo from '../../models/todo';
-
-const s = StyleSheet.create({
-  container: {
-    padding: 24,
-  },
-  input: {
-    marginBottom: 12,
-  },
-});
+import {Container, Button, Input} from './styles';
 
 interface IProps {
   onCreate: (todo: Todo) => void;
@@ -24,10 +15,10 @@ const CreateTodo = ({onCreate}: IProps) => {
   };
 
   return (
-    <View style={s.container}>
-      <TextInput styles={s.input} ref={todoName} />
+    <Container>
+      <Input ref={todoName} placeholder="Task" />
       <Button onPress={handleNewTodo} title={'Create'} />
-    </View>
+    </Container>
   );
 };
 
