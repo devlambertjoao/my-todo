@@ -1,22 +1,22 @@
-import React, {useRef} from 'react';
-import InputReference from '../../interfaces/InputReference';
+import React, {useState} from 'react';
 import Todo from '../../models/todo';
 import {Container, Button, Input} from './styles';
 
 interface IProps {
   onCreate: (todo: Todo) => void;
+  todoName?: string;
 }
 
-const CreateTodo = ({onCreate}: IProps) => {
-  const todoName = useRef<InputReference>(null);
+const CreateTodo = ({onCreate, todoName}: IProps) => {
+  const [name, setName] = useState(todoName);
 
   const handleNewTodo = () => {
-    onCreate(new Todo(todoName.current?.value));
+    onCreate(new Todo(name));
   };
 
   return (
     <Container>
-      <Input ref={todoName} placeholder="Task" />
+      <Input placeholder="Task" onChangeText={setName} value={name} />
       <Button onPress={handleNewTodo} title={'Create'} />
     </Container>
   );
